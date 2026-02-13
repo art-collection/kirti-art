@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art & Craft Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f8f5f0;
+            --secondary-bg: #2d2a26;
+            --accent-gold: #d4af37;
+            --accent-terracotta: #c97855;
+            --accent-sage: #8b9d83;
+            --text-dark: #2d2a26;
+            --text-light: #f8f5f0;
+            --border-color: #d4c5b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Decorative background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 157, 131, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--border-color);
+            position: relative;
+            background: linear-gradient(135deg, rgba(248, 245, 240, 0.9) 0%, rgba(212, 197, 176, 0.3) 100%);
+            animation: fadeInDown 1s ease;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: var(--accent-gold);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--accent-terracotta);
+            opacity: 0.6;
+        }
+
+        h1::before {
+            left: -3rem;
+        }
+
+        h1::after {
+            right: -3rem;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--accent-terracotta);
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2rem;
+            background-color: rgba(45, 42, 38, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-sage), var(--accent-gold), var(--accent-terracotta));
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(45, 42, 38, 0.15);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(45, 42, 38, 0.95), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: var(--accent-gold);
+            font-size: 1rem;
+        }
+
+        /* Category Filter */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            border: 2px solid var(--accent-terracotta);
+            color: var(--text-dark);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-terracotta);
+            color: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 120, 85, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(212, 197, 176, 0.3));
+            padding: 3rem;
+            border-radius: 15px;
+            border: 3px solid var(--border-color);
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--secondary-bg);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-bg);
+        }
+
+        .contact-btn:hover {
+            background-color: transparent;
+            color: var(--secondary-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 42, 38, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-bg);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 6rem;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        footer p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Artisan</h1>
+        <p class="tagline">Handcrafted with Passion</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About My Craft</h2>
+            <div class="about-content">
+                <p>Welcome to my creative world where imagination meets craftsmanship. Each piece you see here is a labor of love, meticulously handcrafted to bring beauty and uniqueness into your life. From intricate designs to bold statements, my work represents a fusion of traditional techniques and contemporary aesthetics.</p>
+                <p>Art and craft are not just my passion—they are my language of expression, my way of connecting with the world.</p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Works</button>
+                <button class="filter-btn" data-category="painting">Painting</button>
+                <button class="filter-btn" data-category="sculpture">Sculpture</button>
+                <button class="filter-btn" data-category="textile">Textile</button>
+                <button class="filter-btn" data-category="pottery">Pottery</button>
+            </div>
+
+            <div class="gallery">
+                <!-- Gallery items will be dynamically populated -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&h=600&fit=crop" alt="Abstract Painting">
+                    <div class="gallery-overlay">
+                        <h3>Sunset Dreams</h3>
+                        <p>Acrylic on Canvas</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="sculpture">
+                    <img src="https://images.unsplash.com/photo-1578926078151-6e5f7873e443?w=800&h=600&fit=crop" alt="Sculpture">
+                    <div class="gallery-overlay">
+                        <h3>Ethereal Form</h3>
+                        <p>Clay & Bronze</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="textile">
+                    <img src="https://images.unsplash.com/photo-1582582494215-b74c6c79c3d3?w=800&h=600&fit=crop" alt="Textile Art">
+                    <div class="gallery-overlay">
+                        <h3>Woven Stories</h3>
+                        <p>Handwoven Tapestry</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&h=600&fit=crop" alt="Watercolor">
+                    <div class="gallery-overlay">
+                        <h3>Botanical Harmony</h3>
+                        <p>Watercolor</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="pottery">
+                    <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&h=600&fit=crop" alt="Pottery">
+                    <div class="gallery-overlay">
+                        <h3>Earth & Fire</h3>
+                        <p>Ceramic Vase</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="sculpture">
+                    <img src="https://images.unsplash.com/photo-1580974928064-f0aeef70895a?w=800&h=600&fit=crop" alt="Modern Sculpture">
+                    <div class="gallery-overlay">
+                        <h3>Balance</h3>
+                        <p>Wood & Metal</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="textile">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&h=600&fit=crop" alt="Embroidery">
+                    <div class="gallery-overlay">
+                        <h3>Floral Whispers</h3>
+                        <p>Hand Embroidery</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="pottery">
+                    <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&h=600&fit=crop" alt="Ceramic Bowl">
+                    <div class="gallery-overlay">
+                        <h3>Ocean Depths</h3>
+                        <p>Glazed Ceramic</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&h=600&fit=crop" alt="Abstract Art">
+                    <div class="gallery-overlay">
+                        <h3>Cosmic Dance</h3>
+                        <p>Mixed Media</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>Interested in commissioning a piece or learning more about my work? I'd love to hear from you. Let's create something beautiful together.</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-btn">Email Me</a>
+                    <a href="https://instagram.com/yourprofile" class="contact-btn" target="_blank">Instagram</a>
+                    <a href="https://facebook.com/yourprofile" class="contact-btn" target="_blank">Facebook</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Artisan Portfolio. Handcrafted with ❤️ | All Rights Reserved</p>
+    </footer>
+
+    <!-- Modal for full-size images -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeInUp 0.6s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.querySelector('.modal-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                modalImage.src = imgSrc;
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover sound effect (optional - uncomment to enable)
+        // const hoverSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZUQ0NVabn8LJjHAU7k9nywHoqBit+zO/glkAKElyx6eaoVRQLR5/f8r5uIAUviM/z1IIzBRtszO7mnlENDlOn5O+xYhwGO5LY8sFyKwUpfsvu45JAChJdr+jmqVQVDEif3vK+bSAGMYjP89OCMwUbbczw5Z5RDQ5Tpuvur2IcBjuS2fK/ciwGKX3N8OOUQAsSWrLo5qlUFQ5Hnt/yvm0gBTCIz/PUgzQEG23L7uWeUhAOWKfq7q9jHAU6ktnywXIrBSp9zO7klEALEluw6OapVRYNS5/e8r1tIAUwh8/z1YQzBB1qy+7lnVEOElqn6e+vYhwGOpHZ8sFyKgUqfcru5ZBBCRRbsejmpVUWDEug3vK9biAFMYfP89SENAQDM4vN7uSeUREMVqXr77BkGwY6ktjyvnQpBSp9y+7kkEEJFFqw6OanVRUMSp/e8r5uIQUwiM/z1IQzBR1pye7knVAPElej6u+wYxwFOpLY8r50KQYpfcru5I9BCRV='); 
+    </script>
+</body>
+</html>
